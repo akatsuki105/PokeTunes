@@ -1,0 +1,50 @@
+{
+    "main": "Main",
+    "misc": "Misc",
+    "name": "Name",
+    "info": "Info",
+    "money": "Money",
+    "coin": "Coin",
+    "player": "Player",
+    "gameinfo": "Game Info",
+    "appearance": "Player Appearance",
+    "nickname": "Nickname",
+    "personality": "Personality",
+    "status": "Status",
+    "gender": "Gender",
+    "ribbon": "Ribbons",
+    "time": {
+        "playtime": "Play Time",
+        "hour": "Hour",
+        "min": "Min",
+        "sec": "Sec"
+    },
+    "color": {
+        "red": "Red",
+        "blue": "Blue",
+        "green": "Green",
+        "brown": "Brown",
+        "orange": "Orange",
+        "gray": "Gray",
+        "lime": "Lime",
+        "sepia": "Sepia"
+    },
+    "locale": {
+        "locale": "Language",
+        "ja": "Japanese",
+        "en": "English"
+    },
+    "settings": {
+        "settings": "Settings",
+        "language": "Language"
+    },
+    "language": {
+        "en": "🇺🇸 English",
+        "ja": "🇯🇵 Japanese"
+    },
+    "version_selection": {
+        "title": "Game Selection",
+        "frlg": "FireRed/LeafGreen Gen3 Save File detected.",
+        "please": "Select the version."
+    }
+}

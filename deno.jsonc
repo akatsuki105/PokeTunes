@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "lib": ["deno.window"],
+    "strict": true
+  },
+  "lint": {
+    "files": {
+      "include": ["src", "pksav", "util"],
+      "exclude": ["node_modules", "tmp"]
+    },
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "include": ["src", "deno.jsonc", "pksav", "util", "tools"],
+      "exclude": ["node_modules", "tmp"]
+    },
+    "options": {
+      "useTabs": false,
+      "lineWidth": 140,
+      "indentWidth": 2,
+      "singleQuote": true
+    }
+  }
+}

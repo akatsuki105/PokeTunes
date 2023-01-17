@@ -1,0 +1,25 @@
+None
+Atk↑ Def↓
+Atk↑ Spe↓
+Atk↑ SpA↓
+Atk↑ SpD↓
+Def↑ Atk↓
+None
+Def↑ Spe↓
+Def↑ SpA↓
+Def↑ SpD↓
+Spe↑ Atk↓
+Spe↑ Def↓
+None
+Spe↑ SpA↓
+Spe↑ SpD↓
+SpA↑ Atk↓
+SpA↑ Def↓
+SpA↑ Spe↓
+None
+SpA↑ SpD↓
+SpD↑ Atk↓
+SpD↑ Def↓
+SpD↑ Spe↓
+SpD↑ SpA↓
+None

@@ -1,0 +1,72 @@
+{
+    "pokemon": "Pokemon",
+    "specie": "Specie",
+    "party": "Party",
+    "box": "Box",
+    "friendship": "Friendship",
+    "pid": "PID",
+    "ability": "Ability",
+    "catchrate": "Catch Rate",
+    "OT": "OT",
+    "badge": "Badge",
+    "held_item": "Held Item",
+    "nature": "Nature",
+    "moves": "Moves",
+    "stat": {
+        "hp": "HP",
+        "atk": "Atk",
+        "def": "Def",
+        "spa": "SpA",
+        "spd": "SpD",
+        "spe": "Spe"
+    },
+    "game": {
+        "unk": "Unknown",
+        "sapphire": "Sapphire",
+        "ruby": "Ruby",
+        "emerald": "Emerald",
+        "firered": "FireRed",
+        "leafgreen": "LeafGreen"
+    },
+    "pouch": {
+        "items": "Items",
+        "balls": "Balls",
+        "keyItems": "Key Items",
+        "tmhm": "TMHMs"
+    },
+    "met": {
+        "tab": "Met",
+        "lv": "Met Level",
+        "loc": "Met Location",
+        "time": {
+            "name": "Time of Day",
+            "unk": "Unk",
+            "morning": "Morning",
+            "day": "Day",
+            "night": "Night"
+        },
+        "originGame": "Origin Game",
+        "ball": "Ball"
+    },
+    "ot": {
+        "name": "Name"
+    },
+    "contest": {
+        "tab": "Contest",
+        "cool": "Cool",
+        "beauty": "Beauty",
+        "cute": "Cute",
+        "smart": "Smart",
+        "tough": "Tough",
+        "sheen": "Sheen"
+    },
+    "pokerus": {
+        "name": "Pokérus",
+        "none": "No Pokérus",
+        "infected": "Infected",
+        "cured": "Cured"
+    },
+    "marking": "Marking",
+    "legality_problem": "Legality Problems",
+    "load_pkm": "Load PKM"
+}

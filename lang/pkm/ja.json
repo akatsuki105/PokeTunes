@@ -1,0 +1,72 @@
+{
+    "pokemon": "ポケモン",
+    "specie": "ポケモン",
+    "party": "手持ち",
+    "box": "ボックス",
+    "friendship": "なつき度",
+    "pid": "性格値",
+    "ability": "特性",
+    "catchrate": "捕捉率",
+    "OT": "おや",
+    "badge": "ジムバッジ",
+    "held_item": "もちもの",
+    "nature": "性格",
+    "moves": "わざ",
+    "stat": {
+        "hp": "ＨＰ",
+        "atk": "攻撃",
+        "def": "防御",
+        "spa": "特攻",
+        "spd": "特防",
+        "spe": "素早"
+    },
+    "game": {
+        "unk": "不明",
+        "sapphire": "サファイア",
+        "ruby": "ルビー",
+        "emerald": "エメラルド",
+        "firered": "ファイアレッド",
+        "leafgreen": "リーフグリーン"
+    },
+    "pouch": {
+        "items": "どうぐ",
+        "balls": "ボール",
+        "keyItems": "たいせつなもの",
+        "tmhm": "わざマシン"
+    },
+    "met": {
+        "tab": "出会った場所",
+        "lv": "レベル",
+        "loc": "出会った場所",
+        "time": {
+            "name": "時間帯",
+            "unk": "不明",
+            "morning": "朝",
+            "day": "昼",
+            "night": "夜"
+        },
+        "originGame": "出身ゲーム",
+        "ball": "ボール"
+    },
+    "ot": {
+        "name": "名前"
+    },
+    "contest": {
+        "tab": "コンテスト",
+        "cool": "かっこよさ",
+        "beauty": "うつくしさ",
+        "cute": "かわいさ",
+        "smart": "かしこさ",
+        "tough": "たくましさ",
+        "sheen": "けづや"
+    },
+    "pokerus": {
+        "name": "ポケルス",
+        "none": "無し",
+        "infected": "感染中",
+        "cured": "抗体あり"
+    },
+    "marking": "マーキング",
+    "legality_problem": "正規個体チェック",
+    "load_pkm": "PKMファイル読み込み"
+}

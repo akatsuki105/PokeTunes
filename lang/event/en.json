@@ -1,0 +1,15 @@
+{
+    "title": "Event",
+    "gen1": {
+        "Zapdos": "Capturd Zapdos",
+        "Moltres": "Capturd Moltres",
+        "Articuno": "Capturd Articuno",
+        "Mewtwo": "Capturd Mewtwo"
+    },
+    "gen2": {
+        "HoOh": "Captured Ho-Oh",
+        "Lugia": "Captured Lugia",
+        "RedGyarados": "Captured Red Gyarados",
+        "Snorlax": "Captured Snorlax"
+    }
+}
