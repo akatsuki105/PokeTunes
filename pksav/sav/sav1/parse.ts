@@ -17,7 +17,7 @@ export const parse1 = (game: Game1, buf: Uint8Array): SAV1 => {
   const money = parseBCD24(loadU24BE(buf, Offset1.Money[loc]));
   const playtime = parsePlayTime(game, buf);
   const bag = { items: parsePouch(game, buf) };
-  const boxes = parsePCBox(game, buf);
+  const boxes = parsePCBox1(game, buf);
   const party = parseParty(game, buf);
   const events = parseEvents(game, buf);
   const coin = 0;
@@ -56,17 +56,21 @@ export const parsePouch = (game: Game1, buf: Uint8Array): Pouch => {
   return pouch;
 };
 
-export const parsePCBox = (game: Game1, buf: Uint8Array): Box[] => {
-  const boxes = newPokeBoxes(game);
-
+const parsePCBox1 = (game: Game1, buf: Uint8Array): Box[] => {
   const loc = game[1];
+  const boxes = newPokeBoxes(game);
+  const currentBoxIdx = buf[Offset1.CurrentBoxNo[loc]] & 0x0F;
 
   boxes.forEach((box, boxIdx) => {
     // Each Box
-    const boxbuf = slice(buf, Offset1.Box[loc][boxIdx], loc === 'ja' ? 1382 : 1122);
-
-    const sBoxMonOT = Offset1.BoxOT[loc][boxIdx];
-    const sBoxMonNicks = Offset1.BoxNick[loc][boxIdx];
+    let boxbuf = slice(buf, Offset1.Box[loc][boxIdx], loc === 'ja' ? 1382 : 1122);
+    let sBoxMonOT = Offset1.BoxOT[loc][boxIdx];
+    let sBoxMonNicks = Offset1.BoxNick[loc][boxIdx];
+    if (boxIdx === currentBoxIdx) {
+      boxbuf = slice(buf, Offset1.CurrentBox[loc], loc === 'ja' ? 1382 : 1122);
+      sBoxMonOT = Offset1.CurrentBoxOT[loc];
+      sBoxMonNicks = Offset1.CurrentBoxNick[loc];
+    }
 
     const len = (boxbuf[0] === 0xFF ? 0 : boxbuf[0]);
     const hdrSize = 1 + (Capacity1[loc] + 1); // [count, [ID, ID, ID, ...], 0xFF]

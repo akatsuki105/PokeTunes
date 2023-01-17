@@ -14,22 +14,27 @@ const keyItemsGS = [
 ] as const
 
 // deno-fmt-ignore
-const tmhm = [
-  191, 192, 193, 194, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249
-] as const
+const tm = [
+  191, 192, 193, 194, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242,
+] as const;
+
+// deno-fmt-ignore
+const hm = [
+  243, 244, 245, 246, 247, 248, 249,
+] as const;
 
 const heldItems = [
   0,
   ...items,
   ...balls,
-  ...tmhm,
+  ...tm,
 ] as const;
 
 export const CategoryGS = {
   items,
   balls,
   keyItems: keyItemsGS,
-  tmhm: tmhm,
+  tmhm: [...tm, ...hm],
   heldItems,
 };
 
@@ -37,6 +42,6 @@ export const CategoryC = {
   items,
   balls,
   keyItems: [...keyItemsGS, 70, 115, 116, 129],
-  tmhm: tmhm,
+  tmhm: [...tm, ...hm],
   heldItems,
 };

@@ -26,11 +26,11 @@ const getIsG1SAV = (sav: Uint8Array): [GameVersion, Locale] => {
 };
 
 const getIsG1SAVU = (sav: Uint8Array): boolean => {
-  return isG12ListValid(sav, Offset1.Party['en'], 20) && isG12ListValid(sav, 0x30C0, 20);
+  return isG12ListValid(sav, Offset1.Party['en'], 20) && isG12ListValid(sav, Offset1.CurrentBox['en'], 20);
 };
 
 const getIsG1SAVJ = (sav: Uint8Array): boolean => {
-  return isG12ListValid(sav, Offset1.Party['ja'], 20) && isG12ListValid(sav, 0x302D, 20);
+  return isG12ListValid(sav, Offset1.Party['ja'], 30) && isG12ListValid(sav, Offset1.CurrentBox['ja'], 30);
 };
 
 const getIsG2SAV = (sav: Uint8Array): [GameVersion, Locale] => {

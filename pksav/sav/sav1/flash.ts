@@ -56,11 +56,17 @@ const flashPouch = (sav: SAV1, old: Uint8Array): Uint8Array => {
 
 const flashPCBox = (s: SAV1, old: Uint8Array): Uint8Array => {
   const loc = s.game[1];
+  const currentBoxIdx = old[Offset1.CurrentBoxNo[loc]] & 0x0F;
 
   s.boxes.forEach((box, boxIdx) => {
     let ofs = Offset1.Box[loc][boxIdx];
-    const sBoxMonOT = Offset1.BoxOT[loc][boxIdx];
-    const sBoxMonNicks = Offset1.BoxNick[loc][boxIdx];
+    let sBoxMonOT = Offset1.BoxOT[loc][boxIdx];
+    let sBoxMonNicks = Offset1.BoxNick[loc][boxIdx];
+    if (boxIdx === currentBoxIdx) {
+      ofs = Offset1.CurrentBox[loc];
+      sBoxMonOT = Offset1.CurrentBoxOT[loc];
+      sBoxMonNicks = Offset1.CurrentBoxNick[loc];
+    }
 
     const mons = box.mons.filter((mon) => !PKMFunc.IsDummy(mon)) as PK1[];
     old[ofs] = mons.length;
@@ -74,11 +80,11 @@ const flashPCBox = (s: SAV1, old: Uint8Array): Uint8Array => {
 
     for (let i = 0; i < mons.length; i++) {
       // Each mon
-      old.set(exportRawPK1(mons[i]).subarray(0, 33), ofs);
+      old.set(exportRawPK1(mons[i]).slice(0, 33), ofs);
 
       // Mon names
-      old.set(mons[i].ot.name, sBoxMonOT + NameSize1[loc]);
-      old.set(mons[i].nickname, sBoxMonNicks + NameSize1[loc]);
+      old.set(mons[i].ot.name, sBoxMonOT + (i * NameSize1[loc]));
+      old.set(mons[i].nickname, sBoxMonNicks + (i * NameSize1[loc]));
 
       ofs += MON_SIZE1;
     }
@@ -148,10 +154,10 @@ const flashEvents = (s: SAV1, old: Uint8Array): Uint8Array => {
 
 const setChecksum = (s: SAV1, old: Uint8Array): Uint8Array => {
   const loc = s.game[1];
-  const { dst, start, end } = Offset1.Checksum;
+  const { dst, start } = Offset1.Checksum;
 
   let checksum = 255;
-  for (let i = start; i <= end[loc]; i++) {
+  for (let i = start; i < dst[loc]; i++) {
     checksum -= old[i];
     if (checksum < 0) checksum += 256;
   }

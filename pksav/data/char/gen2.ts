@@ -1,3 +1,4 @@
+import { NameSize1 } from 'pksav/sav';
 import { Locale } from '../game';
 
 const NAME_TERMINATE = 0x50;
@@ -67,14 +68,15 @@ export const decodeName2 = (lang: Locale, encoded: Uint8Array): string => {
   return decoded;
 };
 
-export const encodeName2 = (lang: Locale, name: string): Uint8Array => {
-  const encoded = [];
+export const encodeName2 = (loc: Locale, name: string): Uint8Array => {
+  const encoded: number[] = [...Array(NameSize1[loc])].fill(0x50);
 
+  let idx = 0;
   for (const c of name) {
-    const code = Char2[lang].indexOf(c);
+    const code = Char2[loc].indexOf(c);
     if (code === -1) continue;
 
-    encoded.push(code);
+    encoded[idx++] = code;
     if (code === NAME_TERMINATE) {
       break;
     }

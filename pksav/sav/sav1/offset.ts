@@ -61,10 +61,6 @@ const Checksum = {
     ja: 0x3594,
   },
   start: 0x2598,
-  end: {
-    en: 0x3521,
-    ja: 0x3593,
-  },
 } as const;
 
 const BoxOT = {
@@ -106,6 +102,26 @@ const EventFlag = {
   ja: 0x29E9,
 } as const;
 
+const CurrentBoxNo = {
+  en: 0x284C,
+  ja: 0x2842,
+} as const;
+
+const CurrentBox = {
+  en: 0x30C0,
+  ja: 0x302D,
+} as const;
+
+const CurrentBoxOT = {
+  en: 0x336A,
+  ja: 0x342B,
+} as const;
+
+const CurrentBoxNick = {
+  en: 0x3446,
+  ja: 0x34DF,
+} as const;
+
 export const Offset1 = {
   PlayerName: 0x2598,
   PlayTime,
@@ -121,4 +137,8 @@ export const Offset1 = {
   Checksum,
   EventFlag,
   ObjectSpawnFlags,
+  CurrentBoxNo,
+  CurrentBox,
+  CurrentBoxOT,
+  CurrentBoxNick,
 } as const;
