@@ -111,6 +111,15 @@ const getInternalID = (ver: GameVersion, dexno: number): number => {
       const ids: number[] = [...PKMData.DexNo[1]];
       return ids.indexOf(dexno);
     }
+
+    case 'RS':
+    case 'FR':
+    case 'LG':
+    case 'E': {
+      const ids: number[] = [...PKMData.DexNo[3]];
+      return ids.indexOf(dexno);
+    }
+
     case 'Invalid': {
       return -1;
     }
