@@ -32,7 +32,8 @@
         "items": "Items",
         "balls": "Balls",
         "keyItems": "Key Items",
-        "tmhm": "TMHMs"
+        "tmhm": "TMHMs",
+        "berries": "Berry"
     },
     "met": {
         "tab": "Met",

@@ -68,7 +68,7 @@ const flashSection1 = (s: SAV3, old: Uint8Array) => {
   storeU16LE(section1, Offset3.Coin[ver], s.coin ^ (s.xor & 0xFFFF));
 
   // Items
-  const pouch: PouchName[] = ['items', 'keyItems', 'balls', 'tmhm'];
+  const pouch: PouchName[] = ['items', 'keyItems', 'balls', 'tmhm', 'berries'];
   pouch.forEach((name) => {
     const p = s.bag[name];
 

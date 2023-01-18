@@ -131,7 +131,7 @@ const parseSection1 = (game: Game3, buf1: Uint8Array, xor: number) => {
     party[i] = PK3(game, monbuf);
   }
 
-  const pouch: PouchName[] = ['items', 'keyItems', 'balls', 'tmhm'];
+  const pouch: PouchName[] = ['items', 'keyItems', 'balls', 'tmhm', 'berries'];
   const capacities = PouchCapacity3[game[0]];
   const bag: { [key: string]: Pouch } = {};
   pouch.forEach((p) => {

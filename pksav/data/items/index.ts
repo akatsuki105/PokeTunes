@@ -19,6 +19,7 @@ const NullCategory = {
   keyItems: [],
   balls: [],
   tmhm: [],
+  berries: [],
   heldItems: [0],
 };
 

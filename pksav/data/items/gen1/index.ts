@@ -11,6 +11,7 @@ export const CategoryRBYW = {
   keyItems: [],
   balls: [],
   tmhm: [],
+  berries: [],
   heldItems: [0],
 } as const;
 

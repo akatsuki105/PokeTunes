@@ -35,6 +35,7 @@ export const CategoryGS = {
   balls,
   keyItems: keyItemsGS,
   tmhm: [...tm, ...hm],
+  berries: [],
   heldItems,
 };
 
@@ -43,5 +44,6 @@ export const CategoryC = {
   balls,
   keyItems: [...keyItemsGS, 70, 115, 116, 129],
   tmhm: [...tm, ...hm],
+  berries: [],
   heldItems,
 };

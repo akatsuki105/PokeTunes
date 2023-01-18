@@ -1,6 +1,6 @@
 import { Item } from './types';
 
-export type PouchName = 'items' | 'balls' | 'keyItems' | 'tmhm';
+export type PouchName = 'items' | 'balls' | 'keyItems' | 'tmhm' | 'berries';
 
 export type Pouch = {
   name: PouchName;

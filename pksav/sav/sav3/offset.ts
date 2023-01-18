@@ -24,6 +24,7 @@ const PouchFRLG = {
   keyItems: 0x03B8,
   balls: 0x0430,
   tmhm: 0x0464,
+  berries: 0x054C,
 } as const;
 
 const Pouch = {
@@ -32,12 +33,14 @@ const Pouch = {
     keyItems: 0x05B0,
     balls: 0x0600,
     tmhm: 0x0640,
+    berries: 0x0740,
   },
   E: {
     items: 0x0560,
     keyItems: 0x05D8,
     balls: 0x0650,
     tmhm: 0x0690,
+    berries: 0x0790,
   },
   FR: PouchFRLG,
   LG: PouchFRLG,

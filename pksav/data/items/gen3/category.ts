@@ -24,6 +24,11 @@ const hmRS = [
 ] as const;
 
 // deno-fmt-ignore
+const berriesRS = [
+  133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175,
+] as const;
+
+// deno-fmt-ignore
 const keyItemsFRLG = [
   ...keyItemsRS, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374
 ] as const;
@@ -38,6 +43,7 @@ const heldItems = [
   ...items,
   ...balls,
   ...tmRS,
+  ...berriesRS,
 ] as const;
 
 export const CategoryRS = {
@@ -45,6 +51,7 @@ export const CategoryRS = {
   keyItems: keyItemsRS,
   balls,
   tmhm: [...tmRS, ...hmRS],
+  berries: berriesRS,
   heldItems,
 } as const;
 
@@ -54,6 +61,7 @@ export const CategoryFRLG = {
   keyItems: keyItemsFRLG,
   balls,
   tmhm: [...tmRS, ...hmRS],
+  berries: berriesRS,
   heldItems,
 } as const;
 
@@ -63,5 +71,6 @@ export const CategoryE = {
   keyItems: keyItemsE,
   balls,
   tmhm: [...tmRS, ...hmRS],
+  berries: berriesRS,
   heldItems,
 } as const;
