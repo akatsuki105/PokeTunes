@@ -1,5 +1,5 @@
 import { Box, Image, ImageProps } from '@chakra-ui/react';
-import { isPK1, isPK2, ItemData, PKM, PKMFunc } from 'pksav';
+import { isPK1, ItemData, PKM, PKMFunc } from 'pksav';
 import { useSmallerScreen } from 'src/hooks';
 import { ItemIcon } from 'src/components';
 import { PKHEX, POKEAPI } from 'src/constants';
@@ -28,16 +28,16 @@ export const PKMIcon: React.FC<{ p: PKM }> = ({ p }) => {
 };
 
 export const PKMSprite: React.FC<{ p: PKM } & Omit<ImageProps, 'p'>> = ({ p, ...props }) => {
-  let dir = 'generation-v/black-white';
-  switch (true) {
-    case isPK1(p):
-      dir = 'generation-i/red-blue/transparent';
-      break;
-    case isPK2(p):
-      dir = 'generation-ii/crystal/transparent';
-      break;
+  if (p.isEgg) {
+    const endpoint = 'generation-v/black-white/egg.png';
+    const url = `${PKM_SPR_ROOT}/${endpoint}`;
+    return <Image src={url} {...props} />;
   }
 
+  let dir = '/generation-v/black-white';
+  if (PKMFunc.IsShiny(p)) {
+    dir = `${dir}/shiny`;
+  }
   const url = `${PKM_SPR_ROOT}/${dir}/${PKMFunc.DexNo(p)}.png`;
   return <Image src={url} {...props} />;
 };

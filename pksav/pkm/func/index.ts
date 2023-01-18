@@ -168,7 +168,7 @@ const ChangeNature = (p: PKMA, natureIdx: number): PKMA => {
 const Learnset = (p?: PKM): number[] => {
   if (p == null) return [];
 
-  const moveIDs = _Learnset(p.ver, DexNo(p), p.lv);
+  const moveIDs = _Learnset(p.ver, DexNo(p));
   return moveIDs;
 };
 

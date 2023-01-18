@@ -1,4 +1,4 @@
-import { NameSize1 } from 'pksav/sav';
+import { NameSize2 } from 'pksav/sav';
 import { Locale } from '../game';
 
 const NAME_TERMINATE = 0x50;
@@ -52,13 +52,15 @@ export const Char2 = {
   ja: CharJa2,
 } as const;
 
-export const decodeName2 = (lang: Locale, encoded: Uint8Array): string => {
+export const decodeName2 = (loc: Locale, encoded: Uint8Array): string => {
+  const max = NameSize2[loc] - 1;
+
   let decoded = '';
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < max; i++) {
     const charcode = encoded[i];
     if (charcode == null) break;
 
-    const c = Char2[lang][charcode];
+    const c = Char2[loc][charcode];
     if (c === '' || c === '@') {
       // console.log(i, encoded[i]);
       break;
@@ -69,7 +71,7 @@ export const decodeName2 = (lang: Locale, encoded: Uint8Array): string => {
 };
 
 export const encodeName2 = (loc: Locale, name: string): Uint8Array => {
-  const encoded: number[] = [...Array(NameSize1[loc])].fill(0x50);
+  const encoded: number[] = [...Array(NameSize2[loc])].fill(0x50);
 
   let idx = 0;
   for (const c of name) {
@@ -77,9 +79,10 @@ export const encodeName2 = (loc: Locale, name: string): Uint8Array => {
     if (code === -1) continue;
 
     encoded[idx++] = code;
-    if (code === NAME_TERMINATE) {
+    if (code === NAME_TERMINATE || idx === (NameSize2[loc] - 1)) {
       break;
     }
   }
+
   return new Uint8Array(encoded);
 };

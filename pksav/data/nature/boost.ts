@@ -10,7 +10,7 @@ export const BoostName = {
 export const Boost = [
   { hp: 1.0, atk: 1.0, def: 1.0, spa: 1.0, spd: 1.0, spe: 1.0 }, // がんばりや
   { hp: 1.0, atk: 1.1, def: 0.9, spa: 1.0, spd: 1.0, spe: 1.0 }, // さみしがり
-  { hp: 1.0, atk: 1.0, def: 1.0, spa: 1.0, spd: 1.0, spe: 0.9 }, // ゆうかん
+  { hp: 1.0, atk: 1.1, def: 1.0, spa: 1.0, spd: 1.0, spe: 0.9 }, // ゆうかん
   { hp: 1.0, atk: 1.1, def: 1.0, spa: 0.9, spd: 1.0, spe: 1.0 }, // いじっぱり
   { hp: 1.0, atk: 1.1, def: 1.0, spa: 1.0, spd: 0.9, spe: 1.0 }, // やんちゃ
   { hp: 1.0, atk: 0.9, def: 1.1, spa: 1.0, spd: 1.0, spe: 1.0 }, // ずぶとい

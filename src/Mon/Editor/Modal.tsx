@@ -1,4 +1,4 @@
-import { CheckIcon, WarningTwoIcon } from '@chakra-ui/icons';
+import { WarningTwoIcon } from '@chakra-ui/icons';
 import { Box, Button, Divider, List, ListIcon, ListItem, Spacer, Text } from '@chakra-ui/react';
 import { Lang, PKM, PKMFunc } from 'pksav';
 import { Problem, toString } from 'pksav/pkm/func/legal/illegal';
@@ -46,11 +46,10 @@ const Legality: React.FC<{ problems: Problem[] }> = ({ problems }) => {
   return (
     <List spacing={3}>
       {problems.map((problem, i) => {
-        const Icon = problem.severity === 'fatal' ? CheckIcon : WarningTwoIcon;
         const color = problem.severity === 'fatal' ? 'red.500' : 'yellow.500';
         return (
           <ListItem key={i}>
-            <ListIcon as={Icon} color={color} />
+            <ListIcon as={WarningTwoIcon} color={color} />
             {toString(lang, problem.msg)}
           </ListItem>
         );

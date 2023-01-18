@@ -24,3 +24,8 @@ export const download = (filename: string, blob: Blob) => {
   a.remove();
   URL.revokeObjectURL(url);
 };
+
+export const hasDuplicated = (arr: unknown[]) => {
+  const s = new Set(arr);
+  return s.size !== arr.length;
+};
