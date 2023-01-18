@@ -69,5 +69,6 @@
     },
     "marking": "Marking",
     "legality_problem": "Legality Problems",
-    "load_pkm": "Load PKM"
+    "load_pkm": "Load PKM",
+    "is_egg": "Is Egg"
 }

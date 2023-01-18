@@ -7,9 +7,10 @@ import {
   NumberInputField,
   NumberInputStepper,
   Spacer,
+  Switch,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
-import { isPK1, PK1, PKM } from 'pksav';
+import { isPK1, PK1, PKM, PKMFunc } from 'pksav';
 import { uint8 } from 'utils';
 import { useDispatch } from 'react-redux';
 import { itemChanged, replaced } from 'src/stores/pkm';
@@ -20,7 +21,13 @@ export const Misc: React.FC<{ p: PKM }> = ({ p }) => {
     <Box>
       <Friendship p={p} />
       <Spacer h={4} />
-      {isPK1(p) ? <CatchRate1 p={p} /> : <Pokerus p={p} />}
+      {isPK1(p) ? <CatchRate1 p={p} /> : (
+        <>
+          <Pokerus p={p} />
+          <Spacer h={6} />
+          <IsEgg p={p} />
+        </>
+      )}
     </Box>
   );
 };
@@ -60,6 +67,22 @@ const Pokerus: React.FC<{ p: PKM }> = ({ p }) => {
         <option selected={strain > 0 && days > 0} value={52}>{t('pokerus.infected')}</option>
         <option selected={strain > 0 && days === 0} value={48}>{t('pokerus.cured')}</option>
       </NumberSelect>
+    </FormControl>
+  );
+};
+
+const IsEgg: React.FC<{ p: PKM }> = ({ p }) => {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const toggleIsEgg = () => {
+    dispatch(replaced(PKMFunc.ToggleEgg(p)));
+  };
+
+  return (
+    <FormControl display='flex'>
+      <FormLabel fontSize='sm' htmlFor='isEgg'>{t('is_egg')}</FormLabel>
+      <Switch id='isEgg' colorScheme='brand' isChecked={p.isEgg} onChange={toggleIsEgg} size='md' />
     </FormControl>
   );
 };

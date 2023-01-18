@@ -21,6 +21,7 @@ import { isDummy, PKM, PKMA } from '../pkm';
 import { Problems } from './legal';
 import { Learnset as _Learnset } from './learnset';
 import { newDummyMon } from '..';
+import { getMinExp } from 'pksav/exp';
 
 /*
   Function for external
@@ -35,12 +36,14 @@ const Specie = (p: PKM, lang: Lang): string => {
 };
 
 const SetSpecie = (old: PKM, specieID: number): PKM => {
-  const p = Clone(old);
+  let p = Clone(old);
   const wasDefaultNickname = Nickname(p) === DefaultNickname(p);
   p.id = specieID;
   if (wasDefaultNickname) {
     p.nickname = Array.from(encodeNames[p.ver](p.loc, DefaultNickname(p)));
   }
+
+  p = SetLevel(p, p.lv);
   return p;
 };
 
@@ -63,6 +66,25 @@ const Nickname = (p: PKM): string => {
 const DefaultNickname = (p: PKM): string => {
   const specie = PKMData.Specie[p.ver][p.loc][DexNo(p)];
   return p.loc === 'en' ? specie.toUpperCase() : specie;
+};
+
+const EggName = (p: PKM): string => {
+  switch (p.loc) {
+    case 'en':
+      return 'EGG';
+    case 'ja':
+      return 'タマゴ';
+  }
+};
+
+const SetLevel = (old: PKM, lv: number): PKM => {
+  const p = Clone(old);
+  p.lv = lv;
+
+  const growth = PKMData.PI[p.ver][PKMFunc.DexNo(p)].growth;
+  p.exp = getMinExp(lv, growth);
+
+  return p;
 };
 
 const getRandomInt = (max: number) => {
@@ -198,13 +220,32 @@ const Parse = (game: Game, data: Uint8Array): PKM => {
   return newDummyMon(game);
 };
 
+const ToggleEgg = (old: PKM): PKM => {
+  let p = Clone(old);
+  const wasEgg = p.isEgg;
+  p.isEgg = !wasEgg;
+  p.item = 0;
+  if (isPK3(p)) {
+    p = SetLocale(p, 'ja');
+  }
+
+  if (wasEgg) {
+    p.nickname = Array.from(encodeNames[p.ver](p.loc, DefaultNickname(p)));
+  } else {
+    p.nickname = Array.from(encodeNames[p.ver](p.loc, EggName(p)));
+  }
+  return p;
+};
+
 export const PKMFunc = {
   Clone,
   Specie,
   SetSpecie,
   SetLocale,
+  SetLevel,
   Nickname,
   DefaultNickname,
+  EggName,
   UniqueID,
   IsShiny,
   Gender,
@@ -218,4 +259,5 @@ export const PKMFunc = {
   IsPKMA,
   Parse,
   Export,
+  ToggleEgg,
 } as const;

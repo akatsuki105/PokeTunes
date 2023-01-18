@@ -1,4 +1,4 @@
-import { Condition, Game3, GameVersion3, Gender, Locale, Nature, PKMData, Status, ZeroStatus } from 'pksav/data';
+import { Condition, Game3, GameVersion3, Gender, Locale, PKMData, Status, ZeroStatus } from 'pksav/data';
 import { getLevel } from 'pksav/exp';
 import { bit, loadU16LE, loadU32LE, setBit, slice, storeU16LE, storeU32LE } from 'utils';
 import { calcHP, calcStat, dummyPKMA, getMoveSet, Move } from './common';

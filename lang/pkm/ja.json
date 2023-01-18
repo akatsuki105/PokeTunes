@@ -69,5 +69,6 @@
     },
     "marking": "マーキング",
     "legality_problem": "正規個体チェック",
-    "load_pkm": "PKMファイル読み込み"
+    "load_pkm": "PKMファイル読み込み",
+    "is_egg": "タマゴ"
 }
