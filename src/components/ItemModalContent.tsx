@@ -5,17 +5,19 @@ import { useLang } from 'src/hooks';
 import { RootState } from 'src/main';
 import { ItemIconURL } from './ItemIcon';
 
-export const ItemModalContent: React.FC<{ items: number[]; onSelect: (itemID: number) => void }> = ({ items, onSelect }) => {
+type ItemData = {
+  name: string;
+  id: number; // Not gen4
+};
+
+export const ItemModalContent: React.FC<{ items: ItemData[]; onSelect: (itemID: number) => void }> = ({ items, onSelect }) => {
   const lang = useLang();
   const ver = useSelector((state: RootState) => state.sav.game[0]);
   const hover = useColorModeValue('blackAlpha.400', 'whiteAlpha.400');
 
-  const itemNames = ItemData.Name[ver][lang];
-
   return (
     <Box maxH='lg' overflow='scroll' borderWidth='1px' borderRadius='lg'>
-      {items.map((id, i) => {
-        const name = itemNames[id];
+      {items.map(({ name, id }, i) => {
         const bg = ['blackAlpha.200', 'whiteAlpha.200'][i % 2];
         const styles = { py: 2, bg, cursor: 'pointer' };
         const src = ItemIconURL(ItemData.Gen4ID[ver][id]);

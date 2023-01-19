@@ -70,5 +70,7 @@
     "marking": "Marking",
     "legality_problem": "Legality Problems",
     "load_pkm": "Load PKM",
-    "is_egg": "Is Egg"
+    "is_egg": "Is Egg",
+    "specie_name": "Specie name",
+    "item_name": "Item name"
 }

@@ -70,5 +70,7 @@
     "marking": "マーキング",
     "legality_problem": "正規個体チェック",
     "load_pkm": "PKMファイル読み込み",
-    "is_egg": "タマゴ"
+    "is_egg": "タマゴ",
+    "specie_name": "ポケモン名",
+    "item_name": "アイテム名"
 }

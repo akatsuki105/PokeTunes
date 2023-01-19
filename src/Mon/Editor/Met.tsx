@@ -89,6 +89,9 @@ const Met3: React.FC<{ p: PK3 }> = ({ p }) => {
 
   const ballIDs: number[] = [...ItemData.Cat[p.ver].balls];
   const itemNames = ItemData.Name[p.ver][lang];
+  const balls = ballIDs.map((id) => {
+    return { name: itemNames[id], id };
+  });
 
   const onChanged = (met: MetInfo) => {
     dispatch(replaced({ ...p, met } as PKM));
@@ -140,7 +143,7 @@ const Met3: React.FC<{ p: PK3 }> = ({ p }) => {
           <ModalContent>
             <ModalBody p={4}>
               <ItemModalContent
-                items={ballIDs}
+                items={balls}
                 onSelect={(ball: number) => {
                   onChanged({ ...p.met, ball });
                   onClose();

@@ -3,11 +3,14 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  InputGroup,
+  InputLeftElement,
   Modal,
   ModalBody,
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Stack,
   useDisclosure,
 } from '@chakra-ui/react';
 import { ItemData, PKM } from 'pksav';
@@ -16,15 +19,27 @@ import { useDispatch } from 'react-redux';
 import { itemChanged } from 'src/stores/pkm';
 import { useTranslation } from 'react-i18next';
 import { SelectBox } from 'src/components/Select';
-import { ItemIcon, ItemModalContent } from 'src/components';
+import { ItemIcon, ItemModalContent, StringInput } from 'src/components';
+import { Search2Icon } from '@chakra-ui/icons';
+import { useState } from 'react';
 
 export const HeldItem: React.FC<{ p: PKM }> = ({ p }) => {
   const lang = useLang();
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
-  const name = ItemData.Name[p.ver][lang][p.item];
+  const [query, setQuery] = useState('');
+
+  const itemNames = ItemData.Name[p.ver][lang];
+  const name = itemNames[p.item];
   const itemIDs = ItemData.Cat[p.ver].heldItems as number[];
+
+  const items = itemIDs.map((id) => {
+    return { name: itemNames[id], id };
+  });
+  const filteredItems = query === '' ? items : items.filter((item) => {
+    return item.name.toLowerCase().includes(query.toLowerCase()) || item.id === 0;
+  });
 
   const onSelect = (itemID: number) => {
     dispatch(itemChanged(itemID));
@@ -35,7 +50,12 @@ export const HeldItem: React.FC<{ p: PKM }> = ({ p }) => {
     <>
       <FormControl>
         <FormLabel fontSize='sm'>{t('held_item')}</FormLabel>
-        <SelectBox onClick={onOpen}>
+        <SelectBox
+          onClick={() => {
+            setQuery('');
+            onOpen();
+          }}
+        >
           <Flex>
             {name}
             <Center pl={2} mt={'3px'}>
@@ -50,7 +70,16 @@ export const HeldItem: React.FC<{ p: PKM }> = ({ p }) => {
         <ModalContent>
           <ModalHeader>{t('held_item')}</ModalHeader>
           <ModalBody>
-            <ItemModalContent items={itemIDs} onSelect={onSelect} />
+            <Stack spacing={4}>
+              <InputGroup>
+                <InputLeftElement
+                  pointerEvents='none'
+                  children={<Search2Icon color='gray.300' />}
+                />
+                <StringInput type='text' pl='2.5rem' placeholder={t('item_name')!} value={query} onChange={setQuery} />
+              </InputGroup>
+              <ItemModalContent items={filteredItems} onSelect={onSelect} />
+            </Stack>
           </ModalBody>
         </ModalContent>
       </Modal>
