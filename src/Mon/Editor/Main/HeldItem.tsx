@@ -22,6 +22,7 @@ import { SelectBox } from 'src/components/Select';
 import { ItemIcon, ItemModalContent, StringInput } from 'src/components';
 import { Search2Icon } from '@chakra-ui/icons';
 import { useState } from 'react';
+import { hiraToKana } from 'utils';
 
 export const HeldItem: React.FC<{ p: PKM }> = ({ p }) => {
   const lang = useLang();
@@ -37,8 +38,11 @@ export const HeldItem: React.FC<{ p: PKM }> = ({ p }) => {
   const items = itemIDs.map((id) => {
     return { name: itemNames[id], id };
   });
+
+  const filterHira = query.toLowerCase();
+  const filterKana = hiraToKana(filterHira);
   const filteredItems = query === '' ? items : items.filter((item) => {
-    return item.name.toLowerCase().includes(query.toLowerCase()) || item.id === 0;
+    return item.name.toLowerCase().includes(filterKana) || item.name.toLowerCase().includes(filterHira) || item.id === 0;
   });
 
   const onSelect = (itemID: number) => {
@@ -59,7 +63,7 @@ export const HeldItem: React.FC<{ p: PKM }> = ({ p }) => {
           <Flex>
             {name}
             <Center pl={2} mt={'3px'}>
-              {p.item > 0 && <ItemIcon itemID4={ItemData.Gen4ID[p.ver][p.item]} h='1.2rem' />}
+              <ItemIcon itemID4={ItemData.Gen4ID[p.ver][p.item]} h='1.2rem' />
             </Center>
           </Flex>
         </SelectBox>

@@ -10,7 +10,6 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
-import { t } from 'i18next';
 import { Ribbon3 } from 'pksav';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
@@ -49,7 +48,7 @@ export const Ribbons3: React.FC<{ r: Ribbon3 }> = ({ r }) => {
       <Modal isOpen={isOpen} onClose={onClose} size='xl'>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{t('ribbon')}</ModalHeader>
+          <ModalHeader>{t('ribbon.ribbon')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <RibbonEditor3 r={r} setRibbon={setRibbon} />

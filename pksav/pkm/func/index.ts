@@ -22,6 +22,7 @@ import { Problems } from './legal';
 import { Learnset as _Learnset } from './learnset';
 import { newDummyMon } from '..';
 import { getMinExp } from 'pksav/exp';
+import { createRandArray } from 'utils';
 
 /*
   Function for external
@@ -91,7 +92,7 @@ const getRandomInt = (max: number) => {
   return Math.floor(Math.random() * max);
 };
 
-export const randomizeIVs = (p: PKM): Status => {
+const RandomIVs = (p: PKM): Status => {
   const ivs = ZeroStatus();
 
   if (isPK1(p) || isPK2(p)) {
@@ -112,7 +113,7 @@ export const randomizeIVs = (p: PKM): Status => {
   return ivs;
 };
 
-export const randomizeEVs = (p: PKM): Status => {
+const RandomEVs = (p: PKM): Status => {
   const evs = ZeroStatus();
 
   if (!IsPKMA(p)) {
@@ -124,6 +125,14 @@ export const randomizeEVs = (p: PKM): Status => {
     evs.spe = getRandomInt(65535);
     return evs;
   }
+
+  const tmp = createRandArray(6, 510, 255);
+  evs.hp = tmp[0];
+  evs.atk = tmp[1];
+  evs.def = tmp[2];
+  evs.spa = tmp[3];
+  evs.spd = tmp[4];
+  evs.spe = tmp[5];
 
   return evs;
 };
@@ -243,6 +252,8 @@ export const PKMFunc = {
   SetSpecie,
   SetLocale,
   SetLevel,
+  RandomIVs,
+  RandomEVs,
   Nickname,
   DefaultNickname,
   EggName,

@@ -145,7 +145,7 @@ export const PKMEditor: React.FC = () => {
 
                 <Divide />
 
-                <Text fontSize='lg' fontWeight='bold'>{t('ribbon')}</Text>
+                <Text fontSize='lg' fontWeight='bold'>{t('ribbon.ribbon')}</Text>
                 <Spacer h={4} />
                 <Ribbons p={p} />
               </>

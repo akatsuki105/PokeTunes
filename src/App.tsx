@@ -1,13 +1,15 @@
 import {
   Box,
   ButtonGroup,
-  Divider,
   Flex,
   Heading,
   HStack,
   IconButton,
+  Image,
+  Link,
   Menu,
   MenuButton,
+  MenuDivider,
   MenuItem,
   MenuList,
   Modal,
@@ -23,6 +25,7 @@ import {
   Text,
   useDisclosure,
   VisuallyHiddenInput,
+  VStack,
 } from '@chakra-ui/react';
 import React, { useRef, useState } from 'react';
 import { flashSAV, Gen, isSAV3, newDummyMon, parseSAV, PKM, PKMFunc } from 'pksav';
@@ -31,7 +34,7 @@ import { download } from 'utils';
 import { Sav } from './Sav';
 import { LangSwitch, Upload } from 'src/components';
 import { Item } from './Item';
-import { DownloadIcon, HamburgerIcon, SettingsIcon, ViewIcon } from '@chakra-ui/icons';
+import { DownloadIcon, HamburgerIcon, InfoOutlineIcon, SettingsIcon, ViewIcon } from '@chakra-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { replaced } from './stores/pkm';
 import { RootState } from './main';
@@ -40,6 +43,7 @@ import { useSmallerScreen } from 'src/hooks';
 import { useTranslation } from 'react-i18next';
 import { FRLGModal } from './components/FRLGModal';
 import { loadFRLGAutoDetect } from './storage';
+import { GITHUB, ICON, TITLE } from './constants';
 
 type Tab = 'Pokemon' | 'Sav' | 'Item';
 type Modal = 'Pokemon' | 'Setting';
@@ -96,13 +100,19 @@ const App: React.FC = () => {
 const Header: React.FC<{ bin: Uint8Array; setTab: (t: Tab) => void }> = ({ bin, setTab }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen: _onOpen, onClose } = useDisclosure();
   const sav = useSelector((state: RootState) => state.sav);
   const isMobile = useSmallerScreen('md');
   const ref = useRef<HTMLInputElement>(null);
   const r = new FileReader();
   const h = isMobile ? '4rem' : '5rem';
   const tabWidth = !isMobile ? '8rem' : '2rem';
+  const [modal, setModal] = useState<'setting' | 'about'>('setting');
+
+  const onOpen = (m: 'setting' | 'about') => {
+    setModal(m);
+    _onOpen();
+  };
 
   const exportSav = () => {
     const buf = flashSAV(sav, bin);
@@ -118,12 +128,12 @@ const Header: React.FC<{ bin: Uint8Array; setTab: (t: Tab) => void }> = ({ bin, 
 
   const Title = () => {
     if (isMobile) {
-      return <Box p='2' w='32px'>P</Box>;
+      return <Box p='2' w='32px' cursor='pointer' onClick={() => window.location.reload()}>P</Box>;
     }
 
     return (
-      <Box p='2'>
-        <Heading size='md'>PokeTunes</Heading>
+      <Box p='2' cursor='pointer' onClick={() => window.location.reload()}>
+        <Heading size='md'>{TITLE}</Heading>
       </Box>
     );
   };
@@ -176,7 +186,9 @@ const Header: React.FC<{ bin: Uint8Array; setTab: (t: Tab) => void }> = ({ bin, 
                       }}
                     />
                   </MenuItem>
-                  <MenuItem icon={<SettingsIcon />} onClick={onOpen}>{t('settings.settings')}</MenuItem>
+                  <MenuItem icon={<SettingsIcon />} onClick={() => onOpen('setting')}>{t('settings.settings')}</MenuItem>
+                  <MenuDivider />
+                  <MenuItem icon={<InfoOutlineIcon />} onClick={() => onOpen('about')}>About</MenuItem>
                 </MenuList>
               </Menu>
             </ButtonGroup>
@@ -186,11 +198,23 @@ const Header: React.FC<{ bin: Uint8Array; setTab: (t: Tab) => void }> = ({ bin, 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>{t('settings.settings')}</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody p={4}>
-              <Setting />
-            </ModalBody>
+            {modal === 'setting' && (
+              <>
+                <ModalHeader>{t('settings.settings')}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody p={4}>
+                  <Setting />
+                </ModalBody>
+              </>
+            )}
+            {modal === 'about' && (
+              <>
+                <ModalCloseButton />
+                <ModalBody p={4}>
+                  <About />
+                </ModalBody>
+              </>
+            )}
           </ModalContent>
         </Modal>
       </Flex>
@@ -225,6 +249,22 @@ const Setting: React.FC = () => {
         </>
       )} */
       }
+    </Box>
+  );
+};
+
+const About: React.FC = () => {
+  return (
+    <Box px={4} pt={8} pb={4}>
+      <VStack>
+        <Image src={ICON} w='64px' />
+        <Spacer h={2} />
+        <Text fontWeight='bold' fontSize='lg'>{TITLE}</Text>
+        <Spacer h={2} />
+        <Link href={GITHUB} isExternal>
+          GitHub
+        </Link>
+      </VStack>
     </Box>
   );
 };

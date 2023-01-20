@@ -12,7 +12,6 @@
     "personality": "Personality",
     "status": "Status",
     "gender": "Gender",
-    "ribbon": "Ribbons",
     "time": {
         "playtime": "Play Time",
         "hour": "Hour",
@@ -46,5 +45,46 @@
         "title": "Game Selection",
         "frlg": "FireRed/LeafGreen Gen3 Save File detected.",
         "please": "Select the version."
+    },
+    "ribbon": {
+        "ribbon": "Ribbons",
+        "championg3": "Champion Ribbon",
+        "winning": "Winning Ribbon",
+        "victory": "Victory Ribbon",
+        "artist": "Artist Ribbon",
+        "effort": "Effort Ribbon",
+        "country": "Country Ribbon",
+        "earth": "Earth Ribbon",
+        "world": "World Ribbon",
+        "g3cool": {
+            "": "Cool Ribbon",
+            "super": "Cool Ribbon Super",
+            "hyper": "Cool Ribbon Hyper",
+            "master": "Cool Ribbon Master"
+        },
+        "g3beauty": {
+            "": "Beauty Ribbon",
+            "super": "Beauty Ribbon Super",
+            "hyper": "Beauty Ribbon Hyper",
+            "master": "Beauty Ribbon Master"
+        },
+        "g3cute": {
+            "": "Cute Ribbon",
+            "super": "Cute Ribbon Super",
+            "hyper": "Cute Ribbon Hyper",
+            "master": "Cute Ribbon Master"
+        },
+        "g3smart": {
+            "": "Smart Ribbon",
+            "super": "Smart Ribbon Super",
+            "hyper": "Smart Ribbon Hyper",
+            "master": "Smart Ribbon Master"
+        },
+        "g3tough": {
+            "": "Tough Ribbon",
+            "super": "Tough Ribbon Super",
+            "hyper": "Tough Ribbon Hyper",
+            "master": "Tough Ribbon Master"
+        }
     }
 }

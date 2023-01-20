@@ -23,7 +23,7 @@ import { replaced } from 'src/stores/pkm';
 import { PKMIconURL } from '../../Icon';
 import { useTranslation } from 'react-i18next';
 import { SelectBox, StringInput } from 'src/components';
-import { zeropad } from 'utils';
+import { hiraToKana, zeropad } from 'utils';
 import { useState } from 'react';
 import { Search2Icon } from '@chakra-ui/icons';
 
@@ -49,8 +49,10 @@ export const Specie: React.FC<{ p: PKM }> = ({ p }) => {
   const mons = PKMData.Specie[p.ver][lang].slice(1).map((name, dexno) => {
     return { name, dexno: dexno + 1 };
   }).slice(0, -1);
+
+  const filterQuery = hiraToKana(query.toLowerCase());
   const filteredMons = query === '' ? mons : mons.filter((mon) => {
-    return mon.name.toLowerCase().includes(query.toLowerCase());
+    return mon.name.toLowerCase().includes(filterQuery);
   });
 
   return (

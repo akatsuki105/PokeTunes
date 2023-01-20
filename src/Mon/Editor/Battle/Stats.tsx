@@ -1,5 +1,5 @@
 import { Box, Button, Flex, HStack, InputGroup, NumberInputField, SimpleGrid, Spacer } from '@chakra-ui/react';
-import { isG1, isGB, Nature, PKM, PKMA, PKMData, PKMFunc, randomizeEVs, randomizeIVs, Status } from 'pksav';
+import { isG1, isGB, Nature, PKM, PKMA, PKMData, PKMFunc, Status } from 'pksav';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Input, NumberInput } from 'src/components';
@@ -92,9 +92,9 @@ export const Stats: React.FC<Props> = (props) => {
       <Spacer h={2} />
 
       <HStack>
-        <Button width={'50%'} onClick={() => dispatch(ivChanged(randomizeIVs(p)))} disabled={disabled}>Randomize IVs</Button>
+        <Button width={'50%'} onClick={() => dispatch(ivChanged(PKMFunc.RandomIVs(p)))} disabled={disabled}>Randomize IVs</Button>
         <Spacer />
-        <Button width={'50%'} onClick={() => dispatch(evChanged(randomizeEVs(p)))} disabled={disabled}>Randomize EVs</Button>
+        <Button width={'50%'} onClick={() => dispatch(evChanged(PKMFunc.RandomEVs(p)))} disabled={disabled}>Randomize EVs</Button>
       </HStack>
     </Box>
   );

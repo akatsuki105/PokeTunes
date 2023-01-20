@@ -69,7 +69,9 @@ export const PouchItems: React.FC<{ p: Pouch; ver: GameVersion }> = ({ p, ver })
                     bg: i % 2 > 0 ? '#553C9A' : 'whiteAlpha.300',
                   }}
                 >
-                  <Td w='5rem'>{gen4ID > 0 && <ItemIcon itemID4={gen4ID} pr={2} />}</Td>
+                  <Td w='5rem'>
+                    <ItemIcon itemID4={gen4ID} pr={2} />
+                  </Td>
                   <Td>{name}</Td>
                   <Td w='5rem'>{count}</Td>
                 </Tr>

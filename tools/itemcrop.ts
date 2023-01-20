@@ -162,7 +162,7 @@ const main = async () => {
   }
 
   console.log(Deno.cwd());
-  const output = `${Deno.cwd()}/images/items/bitem_${gen4ID}.png`;
+  const output = `${Deno.cwd()}/public/images/items/bitem_${gen4ID}.png`;
   try {
     Deno.statSync(output);
   } catch (e) {

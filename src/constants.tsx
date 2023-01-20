@@ -10,3 +10,8 @@ export const POKEAPI = {
   ROOT: 'https://raw.githubusercontent.com/PokeAPI/sprites/40e887ff58c6aca87dd593a9ab89a8f95442fd24',
   PKM_SPRITE: 'sprites/pokemon/versions',
 };
+
+export const TITLE = 'PokeTunes';
+export const GITHUB = 'https://github.com/pokemium/PokeTunes';
+export const ICON = '/icon.svg';
+export const VERSION = 'develop';
